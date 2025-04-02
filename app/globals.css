@@ -4,48 +4,48 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
+    --background: 0 0% 100%; /* Blanco */
+    --foreground: 180 100% 30%; /* Verde oscuro para texto sobre fondo blanco */
+    --card: 0 0% 100%; /* Blanco */
+    --card-foreground: 180 100% 30%; /* Verde oscuro */
+    --popover: 0 0% 100%; /* Blanco */
+    --popover-foreground: 180 100% 30%; /* Verde oscuro */
+    --primary: 180 100% 30%; /* Verde búlgaro (009B74) */
+    --primary-foreground: 0 0% 100%; /* Blanco */
+    --secondary: 359 85% 47%; /* Rojo búlgaro (D01C1F) */
+    --secondary-foreground: 0 0% 100%; /* Blanco */
+    --muted: 180 30% 90%; /* Verde claro */
+    --muted-foreground: 180 100% 20%; /* Verde más oscuro */
+    --accent: 359 85% 47%; /* Rojo búlgaro */
+    --accent-foreground: 0 0% 100%; /* Blanco */
+    --destructive: 359 85% 47%; /* Rojo búlgaro */
+    --destructive-foreground: 0 0% 100%; /* Blanco */
+    --border: 180 30% 80%; /* Verde muy claro */
+    --input: 180 30% 80%; /* Verde muy claro */
+    --ring: 180 100% 30%; /* Verde búlgaro */
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 48%;
+    --background: 180 100% 20%; /* Verde oscuro */
+    --foreground: 0 0% 100%; /* Blanco */
+    --card: 180 100% 25%; /* Verde menos oscuro */
+    --card-foreground: 0 0% 100%; /* Blanco */
+    --popover: 180 100% 20%; /* Verde oscuro */
+    --popover-foreground: 0 0% 100%; /* Blanco */
+    --primary: 0 0% 100%; /* Blanco */
+    --primary-foreground: 180 100% 20%; /* Verde oscuro */
+    --secondary: 359 85% 47%; /* Rojo búlgaro */
+    --secondary-foreground: 0 0% 100%; /* Blanco */
+    --muted: 180 60% 30%; /* Verde moderado */
+    --muted-foreground: 0 0% 90%; /* Casi blanco */
+    --accent: 359 85% 47%; /* Rojo búlgaro */
+    --accent-foreground: 0 0% 100%; /* Blanco */
+    --destructive: 359 85% 60%; /* Rojo búlgaro más claro */
+    --destructive-foreground: 0 0% 100%; /* Blanco */
+    --border: 180 70% 30%; /* Verde */
+    --input: 180 70% 30%; /* Verde */
+    --ring: 359 85% 47%; /* Rojo búlgaro */
   }
 }
 

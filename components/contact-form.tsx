@@ -58,13 +58,20 @@ export function ContactForm() {
   }
 
   return (
-    <section id="contacto" className="py-20 relative">
+    <section id="contacto" className="py-20 relative bg-gradient-to-b from-muted to-background">
+      {/* Franja decorativa superior con los colores de la bandera búlgara */}
+      <div className="absolute top-0 left-0 right-0 h-2 flex">
+        <div className="w-1/3 bg-white"></div>
+        <div className="w-1/3 bg-primary"></div>
+        <div className="w-1/3 bg-secondary"></div>
+      </div>
+      
       <div className="absolute inset-0 z-0 opacity-10">
         <Image src="/placeholder.svg?height=800&width=1600" alt="Contact background" fill className="object-cover" />
       </div>
       <div className="container relative z-10">
         <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl">Contáctanos</h2>
+          <h2 className="mb-4 text-3xl font-bold tracking-tight text-primary sm:text-4xl">Contáctanos</h2>
           <p className="mx-auto max-w-2xl text-muted-foreground">
             Estamos aquí para responder a tus preguntas y ayudarte con tus necesidades.
           </p>
@@ -75,17 +82,17 @@ export function ContactForm() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="space-y-6"
+            className="space-y-6 p-6 rounded-lg border border-border bg-background/50 backdrop-blur-sm"
           >
             <div className="flex items-start space-x-4">
-              <User className="mt-1 h-5 w-5 text-primary" />
+              <User className="mt-1 h-5 w-5 text-secondary" />
               <div>
                 <h3 className="text-lg font-medium">Presidente</h3>
                 <p className="text-muted-foreground">Nikoleta Ivanova Tchepileva</p>
               </div>
             </div>
             <div className="flex items-start space-x-4">
-              <MapPin className="mt-1 h-5 w-5 text-primary" />
+              <MapPin className="mt-1 h-5 w-5 text-secondary" />
               <div>
                 <h3 className="text-lg font-medium">Dirección</h3>
                 <p className="text-muted-foreground">
@@ -94,7 +101,7 @@ export function ContactForm() {
               </div>
             </div>
             <div className="flex items-start space-x-4">
-              <Mail className="mt-1 h-5 w-5 text-primary" />
+              <Mail className="mt-1 h-5 w-5 text-secondary" />
               <div>
                 <h3 className="text-lg font-medium">Correo Electrónico</h3>
                 <p className="text-muted-foreground">president@homemarketco.com</p>
@@ -106,6 +113,7 @@ export function ContactForm() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true, margin: "-100px" }}
+            className="p-6 rounded-lg border border-border bg-background/50 backdrop-blur-sm"
           >
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -163,7 +171,7 @@ export function ContactForm() {
                     </FormItem>
                   )}
                 />
-                <Button type="submit" className="w-full" disabled={isSubmitting}>
+                <Button type="submit" className="w-full bg-secondary hover:bg-secondary/90" disabled={isSubmitting}>
                   {isSubmitting ? "Enviando..." : "Enviar Mensaje"}
                 </Button>
               </form>

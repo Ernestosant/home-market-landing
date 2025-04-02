@@ -40,12 +40,12 @@ export function Header() {
             className="object-contain logo-image"
             priority
           />
-          <span className="text-xl font-bold">Home Market Co.,Ltd.</span>
+          <span className="text-xl font-bold text-primary">Home Market Co.,Ltd.</span>
         </Link>
         <nav className="hidden md:flex md:items-center md:space-x-6">
           <a
             href="#inicio"
-            className="text-sm font-medium transition-colors hover:text-primary"
+            className="text-sm font-medium transition-colors hover:text-secondary"
             onClick={(e) => {
               e.preventDefault()
               scrollToSection("inicio")
@@ -55,7 +55,7 @@ export function Header() {
           </a>
           <a
             href="#nosotros"
-            className="text-sm font-medium transition-colors hover:text-primary"
+            className="text-sm font-medium transition-colors hover:text-secondary"
             onClick={(e) => {
               e.preventDefault()
               scrollToSection("nosotros")
@@ -65,7 +65,7 @@ export function Header() {
           </a>
           <a
             href="#servicios"
-            className="text-sm font-medium transition-colors hover:text-primary"
+            className="text-sm font-medium transition-colors hover:text-secondary"
             onClick={(e) => {
               e.preventDefault()
               scrollToSection("servicios")
@@ -75,7 +75,7 @@ export function Header() {
           </a>
           <a
             href="#contacto"
-            className="text-sm font-medium transition-colors hover:text-primary"
+            className="text-sm font-medium transition-colors hover:text-secondary"
             onClick={(e) => {
               e.preventDefault()
               scrollToSection("contacto")
@@ -84,7 +84,11 @@ export function Header() {
             Contacto
           </a>
         </nav>
-        <ScrollToButton targetId="contacto" variant="outline" className="hidden md:flex">
+        <ScrollToButton 
+          targetId="contacto" 
+          variant="default" 
+          className="hidden md:flex bg-secondary hover:bg-secondary/90 text-white"
+        >
           Contáctanos
         </ScrollToButton>
         <div className="relative md:hidden">
@@ -103,9 +107,9 @@ export function Header() {
                 transition={{ duration: 0.2 }}
                 className="absolute right-0 top-12 w-64 rounded-lg border bg-background shadow-lg"
               >
-                <div className="flex items-center justify-between border-b p-4">
+                <div className="flex items-center justify-between border-b p-4 bg-primary text-primary-foreground">
                   <span className="font-medium">Menú</span>
-                  <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => setIsMenuOpen(false)}>
+                  <Button variant="ghost" size="icon" className="h-8 w-8 hover:bg-primary/80 text-white" onClick={() => setIsMenuOpen(false)}>
                     <X className="h-4 w-4" />
                     <span className="sr-only">Cerrar menú</span>
                   </Button>
@@ -158,7 +162,11 @@ export function Header() {
                     </a>
                   </div>
                   <div className="mt-4 pt-4 border-t">
-                    <ScrollToButton targetId="contacto" className="w-full" onClick={() => setIsMenuOpen(false)}>
+                    <ScrollToButton 
+                      targetId="contacto" 
+                      className="w-full bg-secondary hover:bg-secondary/90 text-white" 
+                      onClick={() => setIsMenuOpen(false)}
+                    >
                       Contáctanos
                     </ScrollToButton>
                   </div>
