@@ -73,16 +73,6 @@ export function Header() {
           >
             Servicios
           </a>
-          <a
-            href="#contacto"
-            className="text-sm font-medium transition-colors hover:text-secondary"
-            onClick={(e) => {
-              e.preventDefault()
-              scrollToSection("contacto")
-            }}
-          >
-            Contacto
-          </a>
         </nav>
         <ScrollToButton 
           targetId="contacto" 
@@ -148,17 +138,6 @@ export function Header() {
                       }}
                     >
                       Servicios
-                    </a>
-                    <a
-                      href="#contacto"
-                      className="flex items-center rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-muted"
-                      onClick={(e) => {
-                        e.preventDefault()
-                        scrollToSection("contacto")
-                        setIsMenuOpen(false)
-                      }}
-                    >
-                      Contacto
                     </a>
                   </div>
                   <div className="mt-4 pt-4 border-t">
