@@ -15,9 +15,9 @@ export function CoreBusiness() {
           viewport={{ once: true, margin: "-100px" }}
           className="mx-auto max-w-3xl text-center"
         >
-          <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl">Nuestro Negocio Principal</h2>
+          <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl">Nuestra Satisfacción, Placer, Tarea Fundamental</h2>
           <p className="mb-8 text-muted-foreground">
-            Especializados en proporcionar soluciones globales para nuestros clientes.
+          Proporcionar soluciones a la medida para nuestros clientes.
           </p>
         </motion.div>
         <motion.div
@@ -40,8 +40,7 @@ export function CoreBusiness() {
               <Globe className="mb-4 h-16 w-16 text-primary" />
               <h3 className="mb-2 text-2xl font-bold">Comercio Internacional</h3>
               <p className="text-muted-foreground">
-                Facilitamos el comercio global, conectando proveedores y clientes de todo el mundo para proporcionar
-                productos de alta calidad que satisfagan las necesidades específicas de cada proyecto.
+              Siendo entes del comercio global, proporcionamos productos de alta calidad para las necesidades específicas de cada proyecto.
               </p>
             </div>
           </div>

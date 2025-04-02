@@ -4,8 +4,6 @@ import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
 import { MissionVision } from "@/components/mission-vision"
-import { Testimonials } from "@/components/testimonials"
-import { Partners } from "@/components/partners"
 
 export default function Home() {
   return (
@@ -15,8 +13,6 @@ export default function Home() {
         <Hero />
         <MissionVision />
         <CoreBusiness />
-        <Partners />
-        <Testimonials />
         <ContactForm />
       </main>
       <Footer />
