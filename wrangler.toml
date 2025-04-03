@@ -1,6 +1,20 @@
 [compatibility_flags]
 nodejs_compat = true
 
-# Opcional: Si necesitas configuraciones adicionales para Pages
+# Configuración para Pages
 [site]
-bucket = "./public"  # O la ruta a tu directorio de salida estática 
+bucket = ".next"  # Directorio de salida de Next.js
+
+# Configuración específica para Pages
+[build]
+command = "npm run build"
+[build.upload]
+format = "service-worker"
+
+# Configuración de rutas
+[env.production]
+routes = [
+  { pattern = "/*", zone_name = "home-market-landing-page.pages.dev" }
+]
+
+# Opcional: Si necesitas configuraciones adicionales para Pages 

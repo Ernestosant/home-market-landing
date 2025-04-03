@@ -4,6 +4,14 @@ publish = ".next"
 
 [build.environment]
 NODE_VERSION = "20"
+NPM_VERSION = "10"
+
+[site]
+bucket = ".next"
 
 [compatibility_flags]
-nodejs_compat = true 
+nodejs_compat = true
+
+[routes]
+pattern = "/*"
+zone_name = "home-market-landing-page.pages.dev" 
