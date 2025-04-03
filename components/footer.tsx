@@ -1,7 +1,5 @@
 "use client"
 
-import Image from "next/image"
-
 // Importar la función scrollToSection
 import { scrollToSection } from "@/utils/scroll-utils"
 
@@ -12,13 +10,6 @@ export function Footer() {
         <div className="grid gap-8 md:grid-cols-2">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <Image
-                src="/logo.PNG"
-                alt="Home Market Logo"
-                width={40}
-                height={40}
-                className="rounded bg-white"
-              />
               <h3 className="text-lg font-medium">Home Market Co.,Ltd.</h3>
             </div>
             <p className="text-sm text-primary-foreground/80">
@@ -83,13 +74,6 @@ export function Footer() {
         </div>
         <div className="mt-8 border-t border-primary-foreground/20 pt-8 text-center text-sm text-primary-foreground/80">
           <p className="flex items-center justify-center gap-2">
-            <Image
-              src="/logo.PNG"
-              alt="Home Market Logo"
-              width={20}
-              height={20}
-              className="rounded bg-white"
-            />
             &copy; {new Date().getFullYear()} Home Market Co.,Ltd. Todos los derechos reservados.
           </p>
         </div>
