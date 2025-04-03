@@ -115,4 +115,48 @@ Este proyecto está bajo licencia privada para Home Market Co.,Ltd.
 
 ## Contacto
 
-Para más información, contactar a Home Market Co.,Ltd. a través del formulario de contacto en el sitio web. 
+Para más información, contactar a Home Market Co.,Ltd. a través del formulario de contacto en el sitio web.
+
+## Configuración del Formulario de Contacto con EmailJS
+
+Para hacer funcional el formulario de contacto, se ha implementado la solución de EmailJS, que permite enviar correos electrónicos directamente desde el navegador sin necesidad de un servidor backend.
+
+### Pasos para configurar EmailJS:
+
+1. **Crear una cuenta en EmailJS**:
+   - Registrarse gratis en [EmailJS](https://www.emailjs.com/)
+   - Iniciar sesión en tu cuenta
+
+2. **Configurar un servicio de correo**:
+   - En el panel de EmailJS, ir a "Email Services"
+   - Haz clic en "Add New Service"
+   - Selecciona tu proveedor de correo (Gmail, Outlook, Yahoo, etc.)
+   - Sigue las instrucciones para conectar tu cuenta
+   - Guarda el ID del servicio (lo necesitarás más adelante)
+
+3. **Crear una plantilla de correo**:
+   - En el panel de EmailJS, ve a "Email Templates"
+   - Haz clic en "Create New Template"
+   - Diseña tu plantilla usando los siguientes parámetros:
+     - `{{from_name}}`: Nombre del remitente
+     - `{{from_email}}`: Email del remitente
+     - `{{message}}`: Mensaje del formulario
+   - Guarda el ID de la plantilla
+
+4. **Obtener la clave pública**:
+   - En el panel de EmailJS, ve a "Account" > "API Keys"
+   - Copia tu "Public Key"
+
+5. **Configurar las variables de entorno**:
+   - Edita el archivo `.env.local` en la raíz del proyecto:
+   ```
+   NEXT_PUBLIC_EMAILJS_SERVICE_ID=tu_service_id
+   NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=tu_template_id
+   NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=tu_public_key
+   ```
+
+6. **Reiniciar el servidor de desarrollo**:
+   - Detén el servidor actual (Ctrl+C)
+   - Reinicia el servidor: `pnpm dev`
+
+Ahora tu formulario de contacto estará completamente funcional y enviará correos electrónicos a la dirección configurada (ernestosantiesteban5@gmail.com). 

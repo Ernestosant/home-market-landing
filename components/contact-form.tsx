@@ -1,11 +1,12 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Mail, MapPin, User } from "lucide-react"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
+import emailjs from '@emailjs/browser'
 
 import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
@@ -13,6 +14,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { toast } from "@/components/ui/use-toast"
 import Image from "next/image"
+import { initEmailJS, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID } from "@/utils/emailjs-config"
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -24,6 +26,9 @@ const formSchema = z.object({
   email: z.string().email({
     message: "Por favor, introduce un correo electrónico válido.",
   }),
+  subject: z.string().min(3, {
+    message: "El asunto debe tener al menos 3 caracteres.",
+  }),
   message: z.string().min(10, {
     message: "El mensaje debe tener al menos 10 caracteres.",
   }),
@@ -32,29 +37,127 @@ const formSchema = z.object({
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
 
+  useEffect(() => {
+    // Inicializar EmailJS cuando el componente se monta
+    initEmailJS();
+  }, []);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
       lastName: "",
       email: "",
+      subject: "",
       message: "",
     },
   })
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true)
-
-    // Simulate form submission
-    setTimeout(() => {
-      console.log(values)
+    
+    // Log más detallado para debugging
+    console.log('Enviando email con los siguientes parámetros:');
+    console.log('SERVICE_ID:', EMAILJS_SERVICE_ID);
+    console.log('TEMPLATE_ID:', EMAILJS_TEMPLATE_ID);
+    console.log('PUBLIC_KEY:', process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
+    
+    if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY) {
+      console.error('Faltan configuraciones de EmailJS. Verifica tus variables de entorno.');
       toast({
-        title: "Formulario enviado",
-        description: "Gracias por contactarnos. Te responderemos pronto.",
+        title: "Error de configuración",
+        description: "Hay un problema con la configuración del formulario de contacto. Por favor, inténtalo más tarde.",
+        variant: "destructive"
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Prepara los datos para enviar por EmailJS con variables que coincidan con la plantilla mostrada
+    const templateParams = {
+      // Campos estándar para la plantilla visualizada
+      title: values.subject || `Contact Us: Mensaje de ${values.name} ${values.lastName}`,  // Para el Subject {{title}}
+      email: values.email,                                               // Correo del remitente para {{email}}
+      name: `${values.name} ${values.lastName}`,                         // Para From Name {{name}}
+      time: new Date().toLocaleString(),                                 // Para la hora del mensaje {{time}}
+      message: values.message,                                           // Para el mensaje {{message}}
+      
+      // Asegurarse de que el correo del remitente esté claramente identificado
+      from_name: `${values.name} ${values.lastName}`,
+      from_email: values.email,
+      reply_to: values.email,
+      sender_email: values.email,
+      
+      // Destinatario - no debería mostrarse como remitente
+      to_name: "Home Market Co.",
+      to_email: "ernestosantiesteban5@gmail.com",
+      recipient: "ernestosantiesteban5@gmail.com"
+    }
+    
+    console.log('Template params:', templateParams);
+
+    // Inicializa explícitamente EmailJS aquí también para asegurarnos
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY?.trim();
+    emailjs.init({
+      publicKey,
+    });
+
+    // Enviar el email usando EmailJS
+    emailjs.send(
+      EMAILJS_SERVICE_ID, 
+      EMAILJS_TEMPLATE_ID, 
+      templateParams,
+      {
+        publicKey: publicKey,
+      }
+    )
+      .then((response) => {
+        console.log('SUCCESS!', response.status, response.text);
+        console.log('Email enviado correctamente. Remitente:', values.email);
+        toast({
+          title: "Formulario enviado",
+          description: "Gracias por contactarnos. Te responderemos pronto.",
+        })
+        form.reset()
       })
-      form.reset()
-      setIsSubmitting(false)
-    }, 1500)
+      .catch((error) => {
+        console.error('FAILED...', error);
+        console.error('Error completo:', JSON.stringify(error, null, 2));
+        console.error('Datos enviados:', JSON.stringify(templateParams, null, 2));
+        
+        // Mostrar información más detallada del error
+        let errorMessage = "Ha ocurrido un error al enviar tu mensaje. Por favor, inténtalo de nuevo.";
+        
+        if (error.text) {
+          console.error('Error text:', error.text);
+          
+          // Errores específicos
+          if (error.text.includes("template ID not found")) {
+            errorMessage = "Error de configuración: Plantilla no encontrada. Por favor, contacta al administrador.";
+            console.error(`Template ID utilizado: ${EMAILJS_TEMPLATE_ID}`);
+          } else if (error.text.includes("service ID not found")) {
+            errorMessage = "Error de configuración: Servicio no encontrado. Por favor, contacta al administrador.";
+            console.error(`Service ID utilizado: ${EMAILJS_SERVICE_ID}`);
+          } else if (error.text.includes("Invalid public key")) {
+            errorMessage = "Error de configuración: Clave pública inválida. Por favor, contacta al administrador.";
+          } else if (error.text.includes("recipients address is empty")) {
+            errorMessage = "Error de configuración: La dirección del destinatario está vacía. Por favor, contacta al administrador.";
+            console.error("Problema con las direcciones de correo:", {
+              to_email: templateParams.to_email,
+              recipient: templateParams.recipient
+            });
+          }
+        }
+        
+        toast({
+          title: "Error al enviar",
+          description: errorMessage,
+          variant: "destructive"
+        })
+      })
+      .finally(() => {
+        setIsSubmitting(false)
+      })
   }
 
   return (
@@ -153,6 +256,19 @@ export function ContactForm() {
                       <FormLabel>Correo Electrónico</FormLabel>
                       <FormControl>
                         <Input placeholder="tu@ejemplo.com" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="subject"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Asunto</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Asunto de tu mensaje" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
