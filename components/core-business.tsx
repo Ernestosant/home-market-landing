@@ -15,7 +15,7 @@ export function CoreBusiness() {
           viewport={{ once: true, margin: "-100px" }}
           className="mx-auto max-w-3xl text-center"
         >
-          <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl">Nuestra Satisfacción, Placer, Tarea Fundamental</h2>
+          <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl">Nuestra Satisfacción, Placer, Tarea Fundamental</h2>
           <p className="mb-8 text-muted-foreground">
           Proporcionar soluciones a la medida para nuestros clientes.
           </p>
@@ -28,19 +28,21 @@ export function CoreBusiness() {
           className="mx-auto max-w-4xl"
         >
           <div className="grid md:grid-cols-2 gap-8 items-center bg-background rounded-lg shadow-lg overflow-hidden">
-            <div className="relative h-64 md:h-full">
+            <div className="flex justify-center items-center p-4">
               <Image
-                src="/placeholder.svg?height=600&width=800"
+                src="/connected world.jpeg"
                 alt="Comercio Internacional"
-                fill
-                className="object-cover"
+                width={600}
+                height={400}
+                className="rounded-lg max-w-full h-auto"
+                style={{ objectFit: 'contain' }}
               />
             </div>
             <div className="p-8 flex flex-col items-center md:items-start text-center md:text-left">
               <Globe className="mb-4 h-16 w-16 text-primary" />
               <h3 className="mb-2 text-2xl font-bold">Comercio Internacional</h3>
               <p className="text-muted-foreground">
-              Siendo entes del comercio global, proporcionamos productos de alta calidad para las necesidades específicas de cada proyecto.
+              Siendo entes del comercio global, proporcionamos productos de alta calidad para las necesidades específicas de cada proyecto.
               </p>
             </div>
           </div>

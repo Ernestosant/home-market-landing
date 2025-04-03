@@ -16,8 +16,10 @@ export function Hero() {
           transition={{ duration: 0.5 }}
           className="mx-auto max-w-3xl text-center"
         >
-          <h1 className="mb-6 text-4xl font-bold tracking-tight text-primary sm:text-5xl md:text-6xl">Home Market Co.,Ltd.</h1>
-          <p className="mb-8 text-xl text-muted-foreground md:text-2xl">
+          <h1 className="mb-6 text-4xl font-bold tracking-tight text-primary sm:text-5xl md:text-6xl text-outline relative">
+            <span className="relative">Home Market Co.,Ltd.</span>
+          </h1>
+          <p className="mb-8 text-xl text-muted-foreground md:text-2xl text-outline">
             Una empresa global de comercio que proporciona una amplia gama de productos.
           </p>
           {/* Reemplazar los botones con los nuevos componentes ScrollToButton */}
@@ -31,10 +33,10 @@ export function Hero() {
           </div>
         </motion.div>
       </div>
-      <div className="absolute inset-0 z-0 opacity-20">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary opacity-30" />
+      <div className="absolute inset-0 z-0 opacity-60">
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 opacity-20" />
         <Image
-          src="/placeholder.svg?height=1080&width=1920"
+          src="/hero_image.jpg"
           alt="Global trade background"
           fill
           className="object-cover"

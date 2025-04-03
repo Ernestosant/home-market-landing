@@ -49,8 +49,8 @@ export function MissionVision() {
               </CardHeader>
               <div className="px-6 pb-4">
                 <Image
-                  src="/placeholder.svg?height=300&width=600"
-                  alt="Misión empresarial"
+                  src="/international_ships.png"
+                  alt="Misión empresarial - Transporte internacional"
                   width={600}
                   height={300}
                   className="rounded-md object-cover mb-4"
@@ -72,8 +72,8 @@ export function MissionVision() {
               </CardHeader>
               <div className="px-6 pb-4">
                 <Image
-                  src="/placeholder.svg?height=300&width=600"
-                  alt="Visión empresarial"
+                  src="/helpping_hand.png"
+                  alt="Visión empresarial - Ayudando a nuestros clientes"
                   width={600}
                   height={300}
                   className="rounded-md object-cover mb-4"

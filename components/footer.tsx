@@ -13,7 +13,7 @@ export function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <Image
-                src="/placeholder.svg?height=40&width=40"
+                src="/logo.PNG"
                 alt="Home Market Logo"
                 width={40}
                 height={40}
@@ -82,7 +82,16 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-8 border-t border-primary-foreground/20 pt-8 text-center text-sm text-primary-foreground/80">
-          <p>&copy; {new Date().getFullYear()} Home Market Co.,Ltd. Todos los derechos reservados.</p>
+          <p className="flex items-center justify-center gap-2">
+            <Image
+              src="/logo.PNG"
+              alt="Home Market Logo"
+              width={20}
+              height={20}
+              className="rounded bg-white"
+            />
+            &copy; {new Date().getFullYear()} Home Market Co.,Ltd. Todos los derechos reservados.
+          </p>
         </div>
       </div>
     </footer>
