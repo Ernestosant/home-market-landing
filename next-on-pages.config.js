@@ -14,6 +14,10 @@ module.exports = {
   buildOutputDirectory: '.next',
   enableNextOnPagesConfigFile: true,
   
+  // Mejorar el manejo de activos estáticos
+  assetPrefixMode: "serverOnly",
+  includeFiles: ["public/**/*"],
+  
   // Configuración para el acceso a variables de entorno
   environmentVariables: {
     NEXT_PUBLIC_EMAILJS_SERVICE_ID: {

@@ -30,7 +30,7 @@ export function CoreBusiness() {
           <div className="grid md:grid-cols-2 gap-8 items-center bg-background rounded-lg shadow-lg overflow-hidden">
             <div className="flex justify-center items-center p-4">
               <Image
-                src="/connected world.jpeg"
+                src="/connected-world.jpeg"
                 alt="Comercio Internacional"
                 width={600}
                 height={400}
