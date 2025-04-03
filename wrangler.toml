@@ -1,2 +1,6 @@
 [compatibility_flags]
-nodejs_compat = true 
+nodejs_compat = true
+
+# Opcional: Si necesitas configuraciones adicionales para Pages
+[site]
+bucket = "./public"  # O la ruta a tu directorio de salida estática 
